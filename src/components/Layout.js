@@ -37,7 +37,7 @@ export class Layout extends React.Component {
     super(props);
     const { AddItem, completeItem, loadInitialDataSocket, deleteItem } = this.props;
     this.state = { term: '', alertOpen: false };
-    socket = io.connect('http://localhost:3005');
+    socket = io.connect('https://my-node-to-do-list.df.r.appspot.com');
     loadInitialDataSocket(socket);
 
     socket.on('itemAdded', (res) => {

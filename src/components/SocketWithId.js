@@ -8,7 +8,7 @@ class SocketWithId extends Component {
       username: this.props.username,
       roomId: this.props.selectedRoomId,
     };
-    this.endpoint = 'http://localhost:3005';
+    this.endpoint = 'https://my-node-to-do-list.df.r.appspot.com';
     this.socket = socketIOClient(this.endpoint, {
       query: `roomId=${this.props.selectedRoomId}`,
     });

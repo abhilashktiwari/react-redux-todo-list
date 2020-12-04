@@ -16,11 +16,6 @@ const FilterButton = (props) => {
             <Grid container item xs={2} direction="row" justify="center" alignItems="center">
                 <span>{`ALL(${props.todo.length})`}</span>
             </Grid>
-            <Grid container item xs={10} direction="row" justify="center" alignItems="center">
-                {Object.keys(Filter).map(filter => {
-                    return <StyledButton id={`${filter}_filter`} key={filter} isactive={(props.filterType === filter).toString()} onClick={() => props.setFilter(Filter[filter])}>{filter}</StyledButton>
-                })}
-            </Grid>
         </Grid>
     )
 }
