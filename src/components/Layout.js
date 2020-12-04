@@ -37,6 +37,7 @@ export class Layout extends React.Component {
     super(props);
     const { AddItem, completeItem, loadInitialDataSocket, deleteItem } = this.props;
     this.state = { term: '', alertOpen: false };
+    //socket = io.connect('https://my-node-to-do-list.df.r.appspot.com');
     socket = io.connect('https://my-node-to-do-list.df.r.appspot.com');
     loadInitialDataSocket(socket);
 
@@ -78,7 +79,6 @@ export class Layout extends React.Component {
         <TextField className="addTasksField" label="Add new task" variant="outlined" value={this.state.term} onChange={(e) => this.setState({ term: e.target.value })} autoComplete='off' />
         <IconButton id="sendIcon" color="primary" onClick={(e) => {
           e.preventDefault();
-          console.log(this.state.term)
           this.state.term === ''
             ? this.setState({ alertOpen: true })
             :
@@ -107,8 +107,9 @@ export class Layout extends React.Component {
               >
                 <ListItemText primary={todo.item}
                   style={todo.completed ? markCompleteStyle : {}}
+                  id={key + 1}
                   onClick={(event) => {
-                    markItemCompleteSocket(socket, todo.itemId ? todo.itemId : items.size, !todo.completed)
+                    markItemCompleteSocket(socket, event.currentTarget.id, !todo.completed)
                   }} />
 
                 <IconButton color="secondary" onClick={(event) => {
